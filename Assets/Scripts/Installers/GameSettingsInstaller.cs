@@ -59,23 +59,8 @@ public class GameSettingsInstaller : MonoInstaller<GameSettingsInstaller>
     private void BindViews()
     {
         Container
-            .Bind<GameResultView>()
-            .AsCached();
-
-        Container
-            .Bind<TimerView>()
-            .AsCached();
-
-        Container
-            .Bind<MinesCountView>()
-            .AsCached();
-        Container
             .BindInstance(_minesCount)
             .WhenInjectedInto<MinesCountView>();
-        
-        Container
-            .Bind<GridCellView>()
-            .AsTransient();
     }
 
     private void BindFactories()
