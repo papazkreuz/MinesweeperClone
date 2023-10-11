@@ -11,14 +11,14 @@ public class ClickHandler : IInitializable, IDisposable
 
     public void Initialize()
     {
-        _signalBus?.Subscribe<CellLeftClickedSignal>(OnCellLeftClicked);
-        _signalBus?.Subscribe<CellRightClickedSignal>(OnCellRightClicked);
+        _signalBus.Subscribe<CellLeftClickedSignal>(OnCellLeftClicked);
+        _signalBus.Subscribe<CellRightClickedSignal>(OnCellRightClicked);
     }
 
     public void Dispose()
     {
-        _signalBus?.Unsubscribe<CellLeftClickedSignal>(OnCellLeftClicked);
-        _signalBus?.Unsubscribe<CellRightClickedSignal>(OnCellRightClicked);
+        _signalBus.Unsubscribe<CellLeftClickedSignal>(OnCellLeftClicked);
+        _signalBus.Unsubscribe<CellRightClickedSignal>(OnCellRightClicked);
     }
 
     public void Init(List<GridCell> gridCells)
@@ -110,6 +110,7 @@ public class ClickHandler : IInitializable, IDisposable
     private void HandleNumberCellClick(GridCell gridCell)
     {
         gridCell.Open();
+        
         _signalBus.Fire(new CellOpenedSignal(gridCell));
     }
 

@@ -6,8 +6,8 @@ public class MinesCountView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _minesCountText;
 
-    [Inject] private SignalBus _signalBus;
-    [Inject] private int _minesCount;
+    [Inject] private readonly SignalBus _signalBus;
+    [Inject] private readonly int _minesCount;
 
     private int _markedCellsCount;
     

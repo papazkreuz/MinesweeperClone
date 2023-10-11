@@ -8,7 +8,7 @@ public class GameResultSolver : IInitializable, IDisposable
     private readonly int _minesCount;
     private readonly List<GridCell> _markedCells;
 
-    [Inject] private SignalBus _signalBus;
+    [Inject] private readonly SignalBus _signalBus;
 
     public GameResultSolver(int minesCount)
     {
@@ -43,9 +43,11 @@ public class GameResultSolver : IInitializable, IDisposable
         {
             _markedCells.Remove(signalInfo.GridCell);
         }
-        
+
         if (_markedCells.Count != _minesCount)
+        {
             return;
+        }
 
         foreach (GridCell markedCell in _markedCells)
         {

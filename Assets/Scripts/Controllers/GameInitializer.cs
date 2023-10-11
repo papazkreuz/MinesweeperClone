@@ -3,28 +3,12 @@ using Zenject;
 
 public class GameInitializer : IInitializable
 {
-    private readonly GridBuilder _gridBuilder;
-    private readonly MinePlacer _minePlacer;
-    private readonly NumberPlacer _numberPlacer;
-    private readonly ClickHandler _clickHandler;
-    private readonly GameResultSolver _gameResultSolver;
-
-    [Inject] private SignalBus _signalBus;
-    
-    public GameInitializer(
-        GridBuilder gridBuilder, 
-        MinePlacer minePlacer, 
-        NumberPlacer numberPlacer, 
-        ClickHandler clickHandler,
-        GameResultSolver gameResultSolver
-        )
-    {
-        _gridBuilder = gridBuilder;
-        _minePlacer = minePlacer;
-        _numberPlacer = numberPlacer;
-        _clickHandler = clickHandler;
-        _gameResultSolver = gameResultSolver;
-    }
+    [Inject] private readonly GridBuilder _gridBuilder;
+    [Inject] private readonly MinePlacer _minePlacer;
+    [Inject] private readonly NumberPlacer _numberPlacer;
+    [Inject] private readonly ClickHandler _clickHandler;
+    [Inject] private readonly GameResultSolver _gameResultSolver;
+    [Inject] private readonly SignalBus _signalBus;
 
     public void Initialize()
     {

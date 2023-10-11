@@ -12,7 +12,7 @@ public class GameResultView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _resultDescriptionText;
     [SerializeField] private Button _restartButton;
 
-    [Inject] private SignalBus _signalBus;
+    [Inject] private readonly SignalBus _signalBus;
 
     private TaskCompletionSource<GameResult> _gameResultReadyTaskCompletionSource;
     private TaskCompletionSource<int> _finalTimeReadyTaskCompletionSource;

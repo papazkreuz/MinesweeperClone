@@ -6,7 +6,7 @@ public class TimerView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _timerText;
 
-    [Inject] private SignalBus _signalBus;
+    [Inject] private readonly SignalBus _signalBus;
     
     private void Start()
     {

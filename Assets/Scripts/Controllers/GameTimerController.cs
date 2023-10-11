@@ -5,7 +5,7 @@ using Zenject;
 
 public class GameTimerController : IInitializable, IDisposable
 {
-    [Inject] private SignalBus _signalBus;
+    [Inject] private readonly SignalBus _signalBus;
     
     private int _currentTime;
     private CancellationTokenSource _cancellationTokenSource;

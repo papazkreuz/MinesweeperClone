@@ -10,7 +10,7 @@ public class GridCellView : MonoBehaviour
     [SerializeField] private Image _foregroundImage;
     [SerializeField] private Image _markImage;
 
-    [Inject] private SignalBus _signalBus;
+    [Inject] private readonly SignalBus _signalBus;
     
     private GridCell _gridCell;
 
@@ -25,9 +25,9 @@ public class GridCellView : MonoBehaviour
 
     private void OnDestroy()
     {
-        _signalBus?.Unsubscribe<GameStartedSignal>(OnGameStarted);
-        _signalBus?.Unsubscribe<CellOpenedSignal>(OnCellOpened);
-        _signalBus?.Unsubscribe<CellMarkedSignal>(OnCellMarked);
+        _signalBus.Unsubscribe<GameStartedSignal>(OnGameStarted);
+        _signalBus.Unsubscribe<CellOpenedSignal>(OnCellOpened);
+        _signalBus.Unsubscribe<CellMarkedSignal>(OnCellMarked);
         
         _button.Dispose();
     }
@@ -45,17 +45,19 @@ public class GridCellView : MonoBehaviour
     private void SetNumberText()
     {
         if (_gridCell.CellType == CellType.Number)
+        {
             _numberText.text = $"{_gridCell.MinesAroundCount}";
+        }
     }
     
     private void OnLeftClick()
     {
-        _signalBus?.Fire(new CellLeftClickedSignal(_gridCell));
+        _signalBus.Fire(new CellLeftClickedSignal(_gridCell));
     }
     
     private void OnRightClick()
     {
-        _signalBus?.Fire(new CellRightClickedSignal(_gridCell));
+        _signalBus.Fire(new CellRightClickedSignal(_gridCell));
     }
 
     private void OnCellOpened(CellOpenedSignal signalInfo)
